@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
+import express from "express";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
-import express from "express";
 
 import { MetaApiClient } from "./services/api.js";
 import { registerPageTools } from "./tools/pages.js";
@@ -63,87 +63,8 @@ app.post("/mcp", async (req, res) => {
   await transport.handleRequest(req, res);
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = Number(process.env.PORT) || 3000;
 
 app.listen(PORT, () => {
   console.log(`Meta MCP Server running on port ${PORT}`);
-});  name: "meta-mcp-server",
-  version: "2.0.0",
 });
-
-registerPageTools(server, client);
-registerInstagramTools(server, client);
-registerAdsTools(server, client);
-registerAudiencesTools(server, client);
-registerInsightsTools(server, client);
-registerThreadsTools(server, client);
-registerAdLibraryTools(server, client);
-registerConversionTools(server, client);
-registerUtilityTools(server, client);
-registerChartTools(server);
-registerCommerceTools(server, client);
-
-const app = express();
-
-app.use(express.json());
-
-app.post("/mcp", async (req, res) => {
-  const transport = new StreamableHTTPServerTransport({
-    sessionIdGenerator: undefined,
-  });
-
-  await server.connect(transport);
-
-  await transport.handleRequest(req, res);
-});
-
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-  console.log(`Meta MCP Server running on port ${PORT}`);
-});  name: "meta-mcp-server",
-  version: "2.0.0",
-});
-
-registerPageTools(server, client);
-registerInstagramTools(server, client);
-registerAdsTools(server, client);
-registerAudiencesTools(server, client);
-registerInsightsTools(server, client);
-registerThreadsTools(server, client);
-registerAdLibraryTools(server, client);
-registerConversionTools(server, client);
-registerUtilityTools(server, client);
-registerChartTools(server);
-registerCommerceTools(server, client);
-
-
-const app = express();
-
-app.use(express.json());
-
-
-app.post("/mcp", async (req, res) => {
-  const transport = new StreamableHTTPServerTransport({
-    sessionIdGenerator: undefined,
-  });
-
-  await server.connect(transport);
-
-  await transport.handleRequest(req, res);
-});
-
-
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-  console.log(`Meta MCP Server running on port ${PORT}`);
-});registerThreadsTools(server, client);
-registerAdLibraryTools(server, client);
-registerConversionTools(server, client);
-registerUtilityTools(server, client);
-registerChartTools(server);
-registerCommerceTools(server, client);
-
-const transport = new StdioServerTransport();
-await server.connect(transport);
